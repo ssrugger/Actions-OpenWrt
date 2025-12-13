@@ -82,7 +82,13 @@ jobs:
         haskell: true
         large-packages: true
         swap-storage: true
-
+    - name: 清理磁盘空间(free_disk_space.sh)
+      run: |
+        cd /tmp
+        wget -O /tmp/free_disk_space.sh 'https://raw.githubusercontent.com/apache/flink/02d30ace69dc18555a5085eccf70ee884e73a16e/tools/azure-pipelines/free_disk_space.sh'
+        sudo chmod +x /tmp/free_disk_space.sh
+        sudo bash /tmp/free_disk_space.sh
+    
     - name: 下载固件源码
       working-directory: /workdir
       run: |
